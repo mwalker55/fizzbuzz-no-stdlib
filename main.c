@@ -19,6 +19,8 @@ void intToText(int num, char* buf){
 		num/=10;
 	}
 
+	/* Original loop builds number in reverse
+	   This reverses the number to its correct order */
 	for(int a = 0, b = size-1; a < b; a++, b--){
 		char temp = buf[a];
 		buf[a] = buf[b];
@@ -32,6 +34,7 @@ int main(void){
 	char buf[64];
 	int i;
 	for(i = 1; i < FIB_MAX; i++){
+		// else-if done instead of just ifs to reduce system call overhead
 		if(i%3==0&&i%5==0){
 			write(1, "FizzBuzz\n", 9);
 		} else if (i%3==0){
